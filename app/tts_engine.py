@@ -32,8 +32,6 @@ def speak_text(text, language="en-IN"):
             headers=headers
         )
 
-        print("[TTS] Status Code:", response.status_code)
-
         if response.status_code != 200:
 
             print("[TTS] Error:")
@@ -64,7 +62,7 @@ def speak_text(text, language="en-IN"):
 
             temp_audio_path = temp_audio.name
 
-        print("[TTS] Playing audio...")
+        print("\n🔊 Speaking...\n")
 
         # DIRECT AUDIO PLAYBACK
         winsound.PlaySound(

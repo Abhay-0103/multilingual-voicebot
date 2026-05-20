@@ -2,21 +2,36 @@ from app.language_detector import detect_language
 from app.llm_processor import generate_response
 from app.tts_engine import speak_text
 from app.livekit_manager import get_language_code
-from app.conversation_manager import update_language
+
+from app.conversation_manager import (
+    update_language,
+    get_language
+)
 
 from app.stt_engine import (
     record_audio,
     transcribe_audio
 )
 
+from app.logger import log_conversation
+
 import time
 
 
 def start_voicebot():
 
-    print("\n=== AI Marketing VoiceBot ===")
-    print("Languages: English | Hindi | Kannada")
-    print("Say 'exit' to quit\n")
+    print("""
+======================================
+ Multilingual AI Marketing VoiceBot
+======================================
+
+Supported Languages:
+• English
+• Hindi
+• Kannada
+
+Say 'exit' anytime to stop.
+""")
 
     while True:
 
@@ -30,9 +45,10 @@ def start_voicebot():
             # Convert speech to text
             user_input = transcribe_audio(audio_path)
 
+            # Empty speech handling
             if not user_input:
 
-                print("No speech detected.\n")
+                print("\n⚠ I couldn't hear anything clearly.\n")
                 continue
 
             print(f"\nYou: {user_input}")
@@ -44,8 +60,20 @@ def start_voicebot():
                 break
 
             # Detect language
-            language = detect_language(user_input)
+            detected_language = detect_language(
+                user_input
+            )
 
+            # Preserve language for short replies
+            if len(user_input.split()) <= 2:
+
+                language = get_language()
+
+            else:
+
+                language = detected_language
+
+            # Update active language
             update_language(language)
 
             print(f"\nDetected Language: {language}")
@@ -58,8 +86,17 @@ def start_voicebot():
 
             print(f"\nBot: {response}\n")
 
-            # Convert language code
-            language_code = get_language_code(language)
+            # Save conversation logs
+            log_conversation(
+                user_input,
+                response,
+                language
+            )
+
+            # Get TTS language code
+            language_code = get_language_code(
+                language
+            )
 
             # Speak response
             speak_text(

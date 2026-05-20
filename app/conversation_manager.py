@@ -3,8 +3,16 @@ conversation_context = {
     "history": []
 }
 
+
 def update_language(language):
+
     conversation_context["language"] = language
+
+
+def get_language():
+
+    return conversation_context["language"]
+
 
 def add_message(role, content):
 
@@ -13,8 +21,12 @@ def add_message(role, content):
         "content": content
     })
 
-def get_history():
-    return conversation_context["history"]
+    # Keep only recent messages
+    conversation_context["history"] = (
+        conversation_context["history"][-10:]
+    )
 
-def get_language():
-    return conversation_context["language"]
+
+def get_history():
+
+    return conversation_context["history"]
