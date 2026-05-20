@@ -1,18 +1,27 @@
 from langdetect import detect
 
+
 def detect_language(text):
 
     try:
 
-        lang = detect(text)
+        detected = detect(text)
 
-        if lang == "hi":
+        # Hindi
+        if detected == "hi":
+
             return "Hindi"
 
-        elif lang == "kn":
+        # Kannada
+        elif detected == "kn":
+
             return "Kannada"
 
-        return "English"
+        # Default English
+        else:
 
-    except:
+            return "English"
+
+    except Exception:
+
         return "English"
