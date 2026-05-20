@@ -125,7 +125,7 @@ multilingual-voicebot/
 ## 1. Clone Repository
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Abhay-0103/multilingual-voicebot.git
 
 cd multilingual-voicebot
 ```
@@ -369,7 +369,3 @@ This project demonstrates:
 - Live Streaming Infrastructure
 
 ---
-
-# License
-
-MIT License
