@@ -65,13 +65,7 @@ Say 'exit' anytime to stop.
             )
 
             # Preserve language for short replies
-            if len(user_input.split()) <= 2:
-
-                language = get_language()
-
-            else:
-
-                language = detected_language
+            language = detected_language
 
             # Update active language
             update_language(language)

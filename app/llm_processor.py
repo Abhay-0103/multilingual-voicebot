@@ -69,7 +69,22 @@ Would you like me to connect you with the sales team?
     prompt = f"""
 {SYSTEM_PROMPT}
 
-Respond ONLY in {language}.
+IMPORTANT LANGUAGE RULES:
+
+- If language is English:
+  respond ONLY in English.
+
+- If language is Hindi:
+  respond ONLY in Hindi using Devanagari script.
+
+- If language is Kannada:
+  respond ONLY in Kannada script.
+
+NEVER mix languages.
+NEVER reply in English for Hindi/Kannada users.
+
+Detected Language:
+{language}
 
 Conversation:
 {conversation_history}

@@ -7,16 +7,32 @@ import winsound
 from app.config import SARVAM_API_KEY
 
 
+def get_speaker(language):
+
+    speakers = {
+        "en-IN": "anushka",
+        "hi-IN": "manisha",
+        "kn-IN": "vidya"
+    }
+
+    return speakers.get(
+        language,
+        "anushka"
+    )
+
+
 def speak_text(text, language="en-IN"):
 
     print("\n[TTS] Generating speech...")
 
     url = "https://api.sarvam.ai/text-to-speech"
 
+    speaker = get_speaker(language)
+
     payload = {
         "inputs": [text],
         "target_language_code": language,
-        "speaker": "anushka"
+        "speaker": speaker
     }
 
     headers = {
@@ -62,9 +78,9 @@ def speak_text(text, language="en-IN"):
 
             temp_audio_path = temp_audio.name
 
-        print("\n🔊 Speaking...\n")
+        print("\nSpeaking...\n")
 
-        # DIRECT AUDIO PLAYBACK
+        # Direct playback
         winsound.PlaySound(
             temp_audio_path,
             winsound.SND_FILENAME

@@ -6,4 +6,7 @@ def get_language_code(language):
         "Kannada": "kn-IN"
     }
 
-    return mapping.get(language, "en-IN")
+    return mapping.get(
+        language,
+        "en-IN"
+    )
