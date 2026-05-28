@@ -22,7 +22,7 @@ def start_voicebot():
 
     print("""
 ======================================
- Multilingual AI Marketing VoiceBot
+ Multilingual AI VoiceBot
 ======================================
 
 Supported Languages:
@@ -36,8 +36,6 @@ Say 'exit' anytime to stop.
     while True:
 
         try:
-
-            input("\nPress ENTER to speak...")
 
             # Record microphone
             audio_path = record_audio()
