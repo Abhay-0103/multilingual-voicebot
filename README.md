@@ -1,4 +1,4 @@
-# Multilingual AI Marketing VoiceBot
+# Multilingual AI VoiceBot
 
 A real-time multilingual AI voice assistant built using:
 
@@ -196,6 +196,8 @@ SARVAM_API_KEY=your_sarvam_api_key
 LIVEKIT_URL=wss://your-project.livekit.cloud
 LIVEKIT_API_KEY=your_livekit_api_key
 LIVEKIT_API_SECRET=your_livekit_api_secret
+
+DEEPGRAM_API_KEY=your_deepgram_api_key
 ```
 
 ---
@@ -219,6 +221,16 @@ https://www.sarvam.ai/
 Used for:
 - Speech-to-Text
 - Text-to-Speech
+
+---
+
+## 3. Deepgram API
+Get API Key:
+
+https://deepgram.com/
+
+Used for:
+- Streaming Text-to-Speech
 
 ---
 
